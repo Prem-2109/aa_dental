@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { slideUpVariants, zoomInVariants } from './animation'
 
 export default function DentalExpertise() {
   const services = [
@@ -15,50 +14,63 @@ export default function DentalExpertise() {
   ];
 
   return (
-    <section
-      className="bg-white py-16 px-6 sm:px-10 md:px-14 lg:px-20"
-      id="services"
-    >
-      <motion.div initial="hidden"
-                      whileInView="visible"
-                      variants={slideUpVariants} className="max-w-6xl mx-auto text-center">
-        {/* Label */}
-        <p className="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gray-100 text-gray-600 px-4 py-1 rounded-full mb-4">
-          What We Do
+    <section className="relative bg-gradient-to-b from-blue-50 via-white to-blue-100 py-20 px-6 sm:px-10 md:px-16">
+      {/* Decorative background circles */}
+      <div className="absolute top-20 left-10 w-24 h-24 bg-blue-200 rounded-full blur-3xl opacity-50"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-pink-200 rounded-full blur-3xl opacity-50"></div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-6xl mx-auto text-center relative z-10"
+      >
+        {/* Tagline */}
+        <p className="inline-block bg-blue-100 text-blue-700 font-semibold tracking-wider text-xs sm:text-sm px-5 py-1 rounded-full mb-5">
+          Our Expertise
         </p>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-snug mb-10">
-          Creating Beautiful Smiles <br className="hidden sm:block" />
-          through Specialized Dental Care.
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-snug mb-12">
+          Advanced Dental Services for Every Smile
         </h2>
 
-        {/* Service Pills */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-5">
+        {/* Grid of cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.08, y: -5 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 10,
-                duration: 0.2,
+              whileHover={{
+                y: -8,
+                scale: 1.05,
+                boxShadow: "0 12px 30px rgba(0, 100, 255, 0.15)",
               }}
-              className="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 transition-all px-4 sm:px-5 py-2.5 sm:py-3 rounded-full shadow-sm cursor-pointer w-full sm:w-auto justify-start sm:justify-center"
+              transition={{ type: "spring", stiffness: 300, damping: 18 }}
+              className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-2xl border border-gray-100 hover:border-blue-200 cursor-pointer flex flex-col items-center text-center transform transition-all duration-300"
             >
-              <motion.img
-                src={service.img}
-                alt={service.name}
-                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-cover"
-                whileHover={{
-                  scale: [1, 1.2, 1],
-                  transition: { duration: 0.4, ease: "easeInOut" },
-                }}
-              />
-              <span className="font-medium text-gray-800 text-sm sm:text-base whitespace-nowrap">
+              {/* Icon */}
+              <motion.div
+                initial={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                className="bg-blue-50 group-hover:bg-blue-100 rounded-full p-4 mb-4 transition-all duration-300"
+              >
+                <img
+                  src={service.img}
+                  alt={service.name}
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                />
+              </motion.div>
+
+              {/* Name */}
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-blue-700 transition">
                 {service.name}
-              </span>
+              </h3>
+
+              {/* Accent bar */}
+              <motion.div
+                className="w-8 h-1 bg-blue-600 rounded-full mt-3 opacity-0 group-hover:opacity-100 transition-all"
+                layoutId="underline"
+              />
             </motion.div>
           ))}
         </div>

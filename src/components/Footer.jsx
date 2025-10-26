@@ -1,81 +1,93 @@
-
 import React from "react";
-import { Linkedin, Instagram, Facebook, Twitter } from "lucide-react"; // npm install lucide-react
+import { Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 
 export default function DentalFooter() {
   return (
-    <footer className="bg-[#000] border-t border-gray-200 py-8 px-6 text-white">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-        {/* Address Section */}
-        <div className="flex-1 text-white text-sm leading-relaxed">
-          <p className="border-l-2 border-gray-300 pl-3">
-            AADental Clinic, 2nd Floor, Sunshine Plaza, <br />
-            OMR Road, Thiruvanmiyur, Chennai, India – 600041
-          </p>
-        </div>
-
-        {/* Contact Info */}
-        <div className="flex-1 text-white text-sm leading-relaxed">
-          <p className="border-l-2 border-gray-300 pl-3">
-            <span className="block">
-              <strong>T:</strong> +91 98765 43210
-            </span>
-            <span className="block">
-              <strong>E:</strong> care@aadental.in
-            </span>
-          </p>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex flex-col items-center md:items-end gap-3">
-          <div className="flex gap-5">
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="flex flex-col items-center text-white hover:text-blue-700"
-            >
-              <Linkedin size={22} />
-              <span className="text-xs mt-1">LinkedIn</span>
-            </a>
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="flex flex-col items-center text-white hover:text-pink-600"
-            >
-              <Instagram size={22} />
-              <span className="text-xs mt-1">Instagram</span>
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="flex flex-col items-center text-white hover:text-blue-500"
-            >
-              <Twitter size={22} />
-              <span className="text-xs mt-1">X</span>
-            </a>
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="flex flex-col items-center text-white hover:text-blue-700"
-            >
-              <Facebook size={22} />
-              <span className="text-xs mt-1">Facebook</span>
-            </a>
-          </div>
-        </div>
+    <footer className="relative bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
+      {/* Decorative top wave */}
+      <div className="absolute -top-6 left-0 right-0 overflow-hidden leading-none ">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="w-full h-6 rotate-180 text-blue-900"
+        >
+          <path
+            d="M321.39,56.44C178.6,71.73,51.16,94.9,0,120H1200V0C1131.65,36.83,1010.91,62,867.69,71.58,723.52,81.29,565.86,72,421.64,55.17,382.5,50.77,351.84,52.78,321.39,56.44Z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </div>
 
-      {/* Divider */}
-      <div className="border-t border-gray-200 my-6"></div>
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-700 pb-10">
+          {/* Address */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4 relative inline-block">
+              Visit Us
+              <span className="absolute left-0 -bottom-1 w-10 h-[2px] bg-blue-500"></span>
+            </h3>
+            <p className="text-gray-300 leading-relaxed">
+              AADental Clinic, #3, VSV Shopping Complex, <br />
+              TNHB Road, Arakkonam - 631001
+            </p>
+          </div>
 
-      {/* Bottom Info */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm">
-        <p>© 2025 AADental Clinic</p>
-        <a href="#" className="hover:text-blue-600">
-          Privacy Policy
-        </a>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4 relative inline-block">
+              Contact
+              <span className="absolute left-0 -bottom-1 w-10 h-[2px] bg-blue-500"></span>
+            </h3>
+            <p className="text-gray-300">
+              <span className="block">
+                <strong>T:</strong> +91 9087231303
+              </span>
+              <span className="block">
+                <strong>E:</strong> care@aadental.in
+              </span>
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="md:text-right">
+            <h3 className="text-lg font-semibold text-white mb-4 relative inline-block md:after:left-auto md:after:right-0">
+              Follow Us
+              <span className="absolute left-0 md:left-auto md:right-0 -bottom-1 w-10 h-[2px] bg-blue-500"></span>
+            </h3>
+            <div className="flex md:justify-end gap-5">
+              {[
+                { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-500" },
+                { icon: Instagram, label: "Instagram", color: "hover:text-pink-500" },
+                { icon: Twitter, label: "Twitter", color: "hover:text-sky-400" },
+                { icon: Facebook, label: "Facebook", color: "hover:text-blue-600" },
+              ].map(({ icon: Icon, label, color }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className={`group ${color} transition-all duration-300`}
+                  aria-label={label}
+                >
+                  <div className="bg-gray-800 group-hover:bg-gray-700 p-3 rounded-full shadow-lg transition-transform transform group-hover:-translate-y-1">
+                    <Icon size={20} />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-10 text-sm text-white">
+          <p>© {new Date().getFullYear()} AADental Clinic. All rights reserved.</p>
+          <a
+            href="#"
+            className="mt-3 md:mt-0 hover:text-blue-400 transition-colors"
+          >
+            Privacy Policy
+          </a>
+        </div>
       </div>
     </footer>
   );
 }
-

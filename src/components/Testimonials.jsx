@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
@@ -42,21 +43,25 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 px-6" id="testimonials">
-      <div className="max-w-6xl mx-auto text-center relative">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+    <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-cyan-100 overflow-hidden" id="testimonials">
+      {/* Subtle decorative background */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-[#00bca2]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#00468B]/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+      <div className="max-w-6xl mx-auto text-center relative z-10">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
           Real Smiles, Real Stories
         </h2>
-        <p className="text-gray-600 mb-12">
-          Hear from our patients who trusted us with their smiles.
+        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+          Genuine experiences from our happy patients who trusted us with their smiles.
         </p>
 
         <div className="relative">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
+              nextEl: ".custom-next",
+              prevEl: ".custom-prev",
             }}
             pagination={{
               clickable: true,
@@ -74,19 +79,21 @@ export default function Testimonials() {
           >
             {testimonials.map((t) => (
               <SwiperSlide key={t.id}>
-                <div className="bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between items-center text-center h-full min-h-[320px] transition-transform duration-300 hover:-translate-y-2">
+                <div className="relative bg-white/80 backdrop-blur-md border border-white/40 shadow-xl rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full min-h-[360px]">
+                  <Quote className="text-[#00bca2] opacity-30 w-10 h-10 absolute top-6 left-6" />
+
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-20 h-20 rounded-full object-cover mb-4 border-4 border-[#00bca2]/30"
+                  />
+
+                  <p className="text-gray-700 italic mb-6 leading-relaxed">
+                    “{t.message}”
+                  </p>
+
                   <div>
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-20 h-20 rounded-full object-cover mb-4 border-4 border-blue-100"
-                    />
-                    <p className="text-gray-700 italic mb-6 leading-relaxed line-clamp-6">
-                      “{t.message}”
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-blue-700">
+                    <h3 className="text-lg font-semibold text-[#00468B]">
                       {t.name}
                     </h3>
                     <span className="text-sm text-gray-500">{t.role}</span>
@@ -96,13 +103,23 @@ export default function Testimonials() {
             ))}
           </Swiper>
 
-          {/* Custom Navigation Arrows */}
-          <div className="swiper-button-prev !text-blue-700 !left-0 md:!left-[-30px] !top-1/2 !transform !-translate-y-1/2 after:!text-xl !font-bold !w-6 !h-6 !flex !items-center !justify-center !bg-white !rounded-full !shadow-md hover:!bg-blue-700 hover:!text-white transition-all"></div>
+          {/* Custom Navigation Buttons */}
+          <button
+            className="custom-prev absolute left-0 md:left-[-50px] top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#00bca2] to-[#00468B] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={20} />
+          </button>
 
-          <div className="swiper-button-next !text-blue-700 !right-0 md:!right-[-30px] !top-1/2 !transform !-translate-y-1/2 after:!text-xl !font-bold !w-6 !h-6 !flex !items-center !justify-center !bg-white !rounded-full !shadow-md hover:!bg-blue-700 hover:!text-white transition-all"></div>
+          <button
+            className="custom-next absolute right-0 md:right-[-50px] top-1/2 -translate-y-1/2 bg-gradient-to-l from-[#00bca2] to-[#00468B] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300"
+            aria-label="Next"
+          >
+            <ChevronRight size={20} />
+          </button>
 
           {/* Pagination Dots */}
-          <div className="swiper-pagination !bottom-0 !static mt-10 gap-2"></div>
+          <div className="swiper-pagination !bottom-0 !static mt-12 flex justify-center gap-2"></div>
         </div>
       </div>
     </section>
