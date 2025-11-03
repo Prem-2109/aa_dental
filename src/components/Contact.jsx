@@ -75,7 +75,6 @@ export default function MediaDaySection() {
           </div>
 
           {/* Decorative bottom shape */}
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#00bca2]/30 rounded-tl-full"></div>
         </motion.div>
       </div>
     </section>

@@ -2,7 +2,6 @@ import './App.css'
 import Seo from './components/Seo'  
 import DentalExpertise from './components/DentalExpertise'
 import { Hero } from './components/Hero'
-import DentalTrustSection from './components/DentalTrustSection'
 import Footer from './components/Footer'
 import Nav from './components/Nav'
 import WhyChooseUs from './components/WhyChooseUs'
@@ -20,7 +19,6 @@ function App() {
       <Hero />
       <AboutUs />
       <WhyChooseUs />
-      <DentalTrustSection />
       <Testimonials />
       <DentalExpertise />
       <FaqSection />

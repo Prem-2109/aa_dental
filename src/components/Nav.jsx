@@ -119,13 +119,16 @@ const Nav = () => {
               duration={500}
               onClick={closeMenu}
             >
-              <button className="border border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white px-6 py-2 rounded-lg font-semibold transition">
+              <button className="bg-gradient-to-r from-blue-600 to-green-600 
+                       hover:shadow-lg text-white px-8 py-3 
+                       rounded-xl font-semibold transition-all duration-300 cursor-pointer">
                 Book Now
               </button>
             </Link>
           </li>
         </ul>
-        <div className="hidden md:block flex-shrink-0"> <Link to="contact" smooth={true} offset={-70} duration={500} onClick={closeMenu}> <button className="border border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white px-6 py-2 rounded-lg font-semibold transition"> Book Now </button> </Link> </div>
+        <div className="hidden md:block flex-shrink-0"> <Link to="contact" smooth={true} offset={-70} duration={500} onClick={closeMenu}> <button className="bg-gradient-to-r from-blue-600 to-green-600 
+                       hover:shadow-lg text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer"> Book Now </button> </Link> </div>
 
 
       </div>

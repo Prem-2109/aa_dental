@@ -3,13 +3,18 @@ import { motion } from 'framer-motion';
 import { slideUpVariants, zoomInVariants } from './animation'
 import '../App.css';
 import { Link } from 'react-scroll';
+import heroBanner from "../assets/images/hero-banner.jpg";
+
 
 export const Hero = () => {
     return (
 
-        <div id='home' className="hero w-full lg:h-[520px] h-fit m-auto pt-12 lg:pt-4 
-              bg-cover bg-center md:bg-right  bg-[url(/src/assets/images/hero-banner.jpg)]
-              px-5 flex justify-between items-center flex-col lg:flex-row gap-12 lg:gap-5">
+        <div
+            id="home"
+            className="hero w-full lg:h-[520px] h-fit m-auto pt-12 lg:pt-4 
+    bg-cover bg-center md:bg-right px-5 flex justify-between items-center flex-col lg:flex-row gap-12 lg:gap-5"
+            style={{ backgroundImage: `url(${heroBanner})` }}
+        >
 
             <motion.div initial="hidden"
                 whileInView="visible"
@@ -31,7 +36,9 @@ export const Hero = () => {
                         {/* <button className="border border-[#0094df] hover:bg-[#0094df] text-white px-8 py-3 rounded-lg font-semibold transition shadow-md">
                             Book an Appointment
                         </button> */}
-                        <button className="border border-[#0094df] text-[#0094df] hover:bg-[#0094df] hover:text-white px-8 py-3 rounded-lg font-semibold transition">
+                        <button className="bg-gradient-to-r from-blue-600 to-green-600 
+                       hover:shadow-lg text-white px-8 py-3 
+                       rounded-xl font-semibold transition-all duration-300 cursor-pointer">
                             Book an Appointment
                         </button>
                     </div>
