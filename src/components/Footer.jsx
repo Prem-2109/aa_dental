@@ -5,7 +5,7 @@ export default function DentalFooter() {
   return (
     <footer className="relative bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
       {/* Decorative top wave */}
-      <div className="absolute -top-6 left-0 right-0 overflow-hidden leading-none ">
+      {/* <div className="absolute -top-6 left-0 right-0 overflow-hidden leading-none ">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
@@ -16,7 +16,7 @@ export default function DentalFooter() {
             fill="currentColor"
           ></path>
         </svg>
-      </div>
+      </div> */}
 
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         {/* Top Section */}

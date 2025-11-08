@@ -9,8 +9,7 @@ import heroBanner from "../assets/images/hero-banner.jpg";
 export const Hero = () => {
     return (
 
-        <div
-            id="home"
+        <div id="home"
             className="hero w-full lg:h-[520px] h-fit m-auto pt-12 lg:pt-4 
     bg-cover bg-center md:bg-right px-5 flex justify-between items-center flex-col lg:flex-row gap-12 lg:gap-5"
             style={{ backgroundImage: `url(${heroBanner})` }}

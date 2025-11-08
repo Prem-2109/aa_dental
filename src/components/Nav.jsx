@@ -30,7 +30,8 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="shadow-md w-full sticky top-0 z-50 bg-white">
+    <nav className="shadow-md w-full sticky top-0 z-50 
+  bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50">
       <div className="flex items-center justify-between py-4 md:px-12 px-6">
         {/* Logo */}
         <div className="flex items-center">
@@ -49,10 +50,10 @@ const Nav = () => {
 
         {/* Navigation Menu */}
         <ul
-          className={`md:flex md:items-center absolute md:static bg-white left-0 w-full md:w-auto md:space-x-8 
-          md:py-0 py-6 md:pl-0 pl-8 transition-all duration-500 ease-in-out
-          ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 md:opacity-100"}`}
-        >
+  className={`bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50 tab:flex tab:items-center absolute tab:static left-0 w-full tab:w-auto tab:space-x-8 
+  tab:py-0 py-6 tab:pl-0 pl-8 transition-all duration-500 ease-in-out
+  ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 tab:opacity-100 "}`}
+>
           {Links.map((link) => (
             <li key={link.name} className="my-4 md:my-0 relative group">
               {link.name === "Services" ? (
@@ -71,7 +72,7 @@ const Nav = () => {
 
                   {/* Submenu */}
                   <ul
-                    className={`md:absolute md:top-[45px] md:left-0 bg-white shadow-xl rounded-lg md:min-w-[200px] overflow-hidden transition-all duration-300 origin-top
+                    className={`md:absolute md:top-[45px] md:left-0 bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50 shadow-xl rounded-lg md:min-w-[200px] overflow-hidden transition-all duration-300 origin-top
                     md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:invisible md:group-hover:visible
                     ${submenuOpen
                         ? "max-h-60 opacity-100 visible translate-y-0"

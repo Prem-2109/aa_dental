@@ -79,7 +79,7 @@ export default function Testimonials() {
           >
             {testimonials.map((t) => (
               <SwiperSlide key={t.id}>
-                <div className="relative bg-white/80 backdrop-blur-md border border-white/40 shadow-xl rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full min-h-[360px]">
+                <div className="relative bg-white/80 backdrop-blur-md border border-white/40  rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full min-h-[360px]">
                   <Quote className="text-[#00bca2] opacity-30 w-10 h-10 absolute top-6 left-6" />
 
                   <img

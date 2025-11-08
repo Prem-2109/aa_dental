@@ -1,4 +1,41 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+  font-family: "Oswald", sans-serif;
+}
+
+/* Make iPads/tablets use mobile menu layout (<= 1024px) */
+@media (max-width: 1024px) {
+  .md\\:flex {
+    display: block !important;
+  }
+  .md\\:items-center {
+    align-items: start !important;
+  }
+  .md\\:static {
+    position: absolute !important;
+  }
+  .md\\:space-x-8 {
+    gap: 0 !important;
+  }
+  .md\\:py-0 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .md\\:pl-0 {
+    padding-left: 2rem !important;
+  }
+  .md\\:opacity-100 {
+    opacity: 1 !important;
+  }
+  .md\\:invisible {
+    visibility: visible !important;
+  }
+  .hidden.md\\:block {
+    display: none !important;
+  }
+}
 
 
 .swiper-button-next,
