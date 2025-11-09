@@ -1,46 +1,64 @@
 import React from "react";
-import { motion } from 'framer-motion';
-import { slideUpVariants, zoomInVariants } from './animation'
-import '../App.css';
-import { Link } from 'react-scroll';
+import { motion } from "framer-motion";
+import { slideUpVariants } from "./animation";
+import { Link } from "react-scroll";
 import heroBanner from "../assets/images/hero-banner.jpg";
 
 export default function DentalHero() {
   return (
     <section
-      className="bg-cover bg-center bg-fixed text-white text-center  relative overflow-hidden pl-20"
-      style={{ backgroundImage: `url(${heroBanner})`, }}
+      className="relative flex items-center justify-center text-white text-center overflow-hidden"
+      style={{
+        minHeight: "100vh",
+        overflowY: "hidden", // Prevents vertical scroll bar
+      }}
     >
-      <motion.div initial="hidden"
-                whileInView="visible"
-                variants={slideUpVariants}
-                className="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10 flex flex-col-reverse md:flex-row items-center gap-10">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroBanner})`,
+          backgroundAttachment: "fixed", // cinematic effect
+        }}
+      />
 
-                <div className="w-full md:w-1/2 text-center md:text-left">
-                    <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold text-[#0094df] leading-tight">
-                        Your Smile, Our Priority —{" "}
-                        <span className="text-[#00a582]">Advanced Dental Care You Can Trust</span>
-                    </h1>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#001a2f]/90 via-[#002f3f]/80 to-[#004e4e]/70 pointer-events-none" />
 
-                    <p className="mt-5 text-gray-600 text-lg md:text-xl max-w-lg mx-auto md:mx-0">
-                        Experience compassionate, state-of-the-art dental care designed for your comfort and confidence.
-                        Our team combines advanced technology with a patient-first approach to keep your smile healthy and bright.
-                    </p>
+      {/* Content Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={slideUpVariants}
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative z-10 max-w-4xl px-10 py-20 md:py-28 flex flex-col items-center justify-center"
+      >
+        <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold leading-tight mb-6">
+          Your Smile, Our Priority —{" "}
+          <span className="text-teal-300">Advanced Dental Care You Can Trust</span>
+        </h1>
 
-                    <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        {/* <button className="border border-[#0094df] hover:bg-[#0094df] text-white px-8 py-3 rounded-lg font-semibold transition shadow-md">
-                            Book an Appointment
-                        </button> */}
-                        <button className="bg-gradient-to-r from-blue-600 to-green-600 
-                       hover:shadow-lg text-white px-8 py-3 
-                       rounded-xl font-semibold transition-all duration-300 cursor-pointer">
-                            Book an Appointment
-                        </button>
-                    </div>
-                </div>
+        <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+          Experience compassionate, state-of-the-art dental care designed for your
+          comfort and confidence. Our team combines advanced technology with a
+          patient-first approach to keep your smile healthy and bright.
+        </p>
 
+        <Link
+          to="contact"
+          smooth={true}
+          offset={-70}
+          duration={500}
+          className="bg-gradient-to-r from-blue-600 to-green-600 hover:shadow-lg 
+          text-white px-10 py-4 rounded-xl font-semibold text-lg 
+          transition-all duration-300 cursor-pointer"
+        >
+          Book an Appointment
+        </Link>
+      </motion.div>
 
-            </motion.div>
+      {/* Optional Subtle Blur */}
+      <div className="absolute inset-0 backdrop-blur-[1px] pointer-events-none" />
     </section>
   );
 }

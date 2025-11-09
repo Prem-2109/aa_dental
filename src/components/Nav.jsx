@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HiOutlineX, HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-scroll";
 import { FaChevronDown } from "react-icons/fa";
@@ -7,6 +7,16 @@ import logo from "../assets/images/logo/logo.png";
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Detect scroll for shadow and sticky background effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => {
     setOpen(false);
@@ -30,8 +40,14 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="shadow-md w-full sticky top-0 z-50 
-  bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 
+      ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-md"
+          : "bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50"
+      }`}
+    >
       <div className="flex items-center justify-between py-4 md:px-12 px-6">
         {/* Logo */}
         <div className="flex items-center">
@@ -50,23 +66,24 @@ const Nav = () => {
 
         {/* Navigation Menu */}
         <ul
-  className={`bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50 tab:flex tab:items-center absolute tab:static left-0 w-full tab:w-auto tab:space-x-8 
-  tab:py-0 py-6 tab:pl-0 pl-8 transition-all duration-500 ease-in-out
-  ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 tab:opacity-100 "}`}
->
+          className={`md:flex md:items-center absolute md:static left-0 w-full md:w-auto md:space-x-8 
+          md:py-0 py-6 md:pl-0 pl-8 transition-all duration-500 ease-in-out
+          ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 md:opacity-100 "}`}
+        >
           {Links.map((link) => (
             <li key={link.name} className="my-4 md:my-0 relative group">
               {link.name === "Services" ? (
                 <>
-                  {/* Services Main Button */}
+                  {/* Services Dropdown */}
                   <button
                     onClick={() => setSubmenuOpen(!submenuOpen)}
                     className="flex items-center gap-1 text-gray-800 hover:text-blue-700 font-semibold duration-300 cursor-pointer"
                   >
                     {link.name}
                     <FaChevronDown
-                      className={`text-xs transition-transform duration-200 ${submenuOpen ? "rotate-180" : "rotate-0"
-                        } md:group-hover:rotate-180`}
+                      className={`text-xs transition-transform duration-200 ${
+                        submenuOpen ? "rotate-180" : "rotate-0"
+                      } md:group-hover:rotate-180`}
                     />
                   </button>
 
@@ -74,10 +91,11 @@ const Nav = () => {
                   <ul
                     className={`md:absolute md:top-[45px] md:left-0 bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50 shadow-xl rounded-lg md:min-w-[200px] overflow-hidden transition-all duration-300 origin-top
                     md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:invisible md:group-hover:visible
-                    ${submenuOpen
+                    ${
+                      submenuOpen
                         ? "max-h-60 opacity-100 visible translate-y-0"
                         : "max-h-0 opacity-0 invisible"
-                      } md:max-h-none`}
+                    } md:max-h-none`}
                   >
                     {serviceSubmenu.map((sub) => (
                       <li key={sub.name} className="last:border-none">
@@ -111,7 +129,7 @@ const Nav = () => {
             </li>
           ))}
 
-          {/* Contact / Book Button */}
+          {/* Contact / Book Button for mobile */}
           <li className="mt-4 md:mt-0 block md:hidden">
             <Link
               to="contact"
@@ -128,14 +146,23 @@ const Nav = () => {
             </Link>
           </li>
         </ul>
-        <div className="hidden md:block flex-shrink-0"> <Link to="contact" smooth={true} offset={-70} duration={500} onClick={closeMenu}> <button className="bg-gradient-to-r from-blue-600 to-green-600 
-                       hover:shadow-lg text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer"> Book Now </button> </Link> </div>
 
-
+        {/* Desktop Book Now Button */}
+        <div className="hidden md:block flex-shrink-0">
+          <Link
+            to="contact"
+            smooth={true}
+            offset={-70}
+            duration={500}
+            onClick={closeMenu}
+          >
+            <button className="bg-gradient-to-r from-blue-600 to-green-600 
+                       hover:shadow-lg text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer">
+              Book Now
+            </button>
+          </Link>
+        </div>
       </div>
-
-
-
     </nav>
   );
 };
