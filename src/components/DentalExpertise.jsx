@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function DentalExpertise() {
   const services = [
     { name: "General Dentistry", img: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png" },
-    { name: "Cosmetic Dentistry", img: "https://cdn-icons-png.flaticon.com/512/4221/4221623.png" },
+    { name: "Aesthetic Dentistry", img: "https://cdn-icons-png.flaticon.com/512/5987/5987583.png" },
     { name: "Orthodontics", img: "https://cdn-icons-png.flaticon.com/512/3004/3004468.png" },
     { name: "Dental Implants", img: "https://cdn-icons-png.flaticon.com/512/4306/4306558.png" },
     { name: "Pediatric Dentistry", img: "https://cdn-icons-png.flaticon.com/512/3481/3481027.png" },

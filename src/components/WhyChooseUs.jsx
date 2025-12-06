@@ -1,7 +1,7 @@
 import React from "react";
 import { Clock, HeartPulse, ShieldCheck, Smile } from "lucide-react";
 import { motion } from "framer-motion";
-import DentalImage from "../assets/images/two-people.jpg";
+import { assets } from "../assets/images/assets";
 
 export default function WhyChooseUs() {
   const features = [
@@ -50,8 +50,8 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 text-center lg:text-left mb-12 leading-tight">
-            Why Choose <span className="text-blue-600">AA Dental?</span>
+          <h2 className="text-4xl md:text-4xl font-extrabold text-gray-900 text-center lg:text-left mb-12 leading-tight">
+            Why Choose <span className="text-blue-600">AADental?</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -88,7 +88,7 @@ export default function WhyChooseUs() {
         >
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white hover:border-blue-100 transition-all max-w-md">
             <img
-              src={DentalImage}
+              src={assets.DentalImage}
               alt="Dental care"
               className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
             />

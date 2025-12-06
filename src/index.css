@@ -1,48 +1,60 @@
+
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-body {
-  font-family: "Oswald", sans-serif;
-}
-
-/* Make iPads/tablets use mobile menu layout (<= 1024px) */
-@media (max-width: 1024px) {
-  .md\\:flex {
-    display: block !important;
-  }
-  .md\\:items-center {
-    align-items: start !important;
-  }
-  .md\\:static {
-    position: absolute !important;
-  }
-  .md\\:space-x-8 {
-    gap: 0 !important;
-  }
-  .md\\:py-0 {
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-  }
-  .md\\:pl-0 {
-    padding-left: 2rem !important;
-  }
-  .md\\:opacity-100 {
-    opacity: 1 !important;
-  }
-  .md\\:invisible {
-    visibility: visible !important;
-  }
-  .hidden.md\\:block {
-    display: none !important;
-  }
-}
 
 
 .swiper-button-next,
 .swiper-button-prev {
   background: white;
   border-radius: 9999px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   width: 40px;
   height: 40px;
 }
+
+
+.whats-float {
+  position: fixed;
+  transform:translate(108px,0px);
+  top:28%;
+  right:0;
+  width:150px;
+  overflow: hidden;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 2px 0 0 2px;
+  z-index: 24;
+  transition: all 0.5s ease-in-out;
+  vertical-align: middle
+}
+/* 
+.whats-float a span {
+  color: white;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  position: absolute;
+  line-height: 16px;
+  font-weight: bolder;
+} */
+
+.whats-float i {
+  font-size: 30px;
+  color: white;
+  line-height: 30px;
+  padding: 10px;
+  /* transform:rotate(0deg);
+  transition: all 0.5s ease-in-out;
+  text-align:center; */
+
+}
+
+/* .whats-float:hover {
+  color: #FFFFFF;
+  transform:translate(0px,0px);
+}
+
+.whats-float:hover i  {
+  transform:rotate(360deg);
+} */
+

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineX, HiMenuAlt3 } from "react-icons/hi";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
-import logo from "../assets/images/logo/logo.png";
+import { assets } from "../assets/images/assets";
+
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -24,34 +25,33 @@ const Nav = () => {
   };
 
   const Links = [
-    { name: "Home", link: "home" },
-    { name: "About Us", link: "about" },
-    { name: "Testimonials", link: "testimonials" },
-    { name: "Services", link: "services" },
-    { name: "Faq", link: "faqs" },
-    { name: "Contact", link: "contact" },
+    { name: "Home", link: "/" },
+    { name: "About Us", link: "/about" },
+    { name: "Treatment", link: "services" },
+    { name: "Before and After", link: "/beforeafter" },
+    { name: "Contact Us", link: "/contactus" },
   ];
 
   const serviceSubmenu = [
-    { name: "Teeth Cleaning", link: "cleaning" },
-    { name: "Root Canal", link: "root-canal" },
-    { name: "Braces", link: "braces" },
-    { name: "Dental Implants", link: "implants" },
+    { name: "Root Canal", link: "/rct" },
+    { name: "Dental Implants", link: "/dentalimplement" },
+    { name: "Dental Filling", link: "/dentalfilling" },
+    { name: "Dental Extraction", link: "/dentalextraction" },
+    { name: "Aesthetic Dentistry", link: "/aestheticdentistry" },
   ];
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 
-      ${
-        scrolled
+      ${scrolled
           ? "bg-white/90 backdrop-blur-md shadow-md"
           : "bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50"
-      }`}
+        }`}
     >
       <div className="flex items-center justify-between py-4 md:px-12 px-6">
         {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="Logo" width={50} height={45} />
+          <img src={assets.logo} alt="Logo" width={50} height={45} />
           <span className="text-2xl font-extrabold text-blue-600">AA</span>
           <span className="text-2xl font-extrabold text-gray-800">Dental</span>
         </div>
@@ -66,13 +66,14 @@ const Nav = () => {
 
         {/* Navigation Menu */}
         <ul
-          className={`md:flex md:items-center absolute md:static left-0 w-full md:w-auto md:space-x-8 
-          md:py-0 py-6 md:pl-0 pl-8 transition-all duration-500 ease-in-out
-          ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 md:opacity-100 "}`}
+          className={`md:flex md:items-center absolute md:static left-0 w-full md:w-auto md:space-x-8
+  bg-white md:bg-transparent
+  md:py-0 py-6 md:pl-0 pl-8 transition-all duration-500 ease-in-out
+  ${open ? "top-16 opacity-100" : "top-[-400px] opacity-0 md:opacity-100"}`}
         >
           {Links.map((link) => (
             <li key={link.name} className="my-4 md:my-0 relative group">
-              {link.name === "Services" ? (
+              {link.name === "Treatment" ? (
                 <>
                   {/* Services Dropdown */}
                   <button
@@ -81,9 +82,8 @@ const Nav = () => {
                   >
                     {link.name}
                     <FaChevronDown
-                      className={`text-xs transition-transform duration-200 ${
-                        submenuOpen ? "rotate-180" : "rotate-0"
-                      } md:group-hover:rotate-180`}
+                      className={`text-xs transition-transform duration-200 ${submenuOpen ? "rotate-180" : "rotate-0"
+                        } md:group-hover:rotate-180`}
                     />
                   </button>
 
@@ -91,11 +91,10 @@ const Nav = () => {
                   <ul
                     className={`md:absolute md:top-[45px] md:left-0 bg-gradient-to-r from-blue-50 via-cyan-100 to-green-50 shadow-xl rounded-lg md:min-w-[200px] overflow-hidden transition-all duration-300 origin-top
                     md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:invisible md:group-hover:visible
-                    ${
-                      submenuOpen
+                    ${submenuOpen
                         ? "max-h-60 opacity-100 visible translate-y-0"
                         : "max-h-0 opacity-0 invisible"
-                    } md:max-h-none`}
+                      } md:max-h-none`}
                   >
                     {serviceSubmenu.map((sub) => (
                       <li key={sub.name} className="last:border-none">
@@ -115,13 +114,8 @@ const Nav = () => {
                 </>
               ) : (
                 <Link
-                  onClick={closeMenu}
-                  to={link.link}
-                  smooth={true}
-                  spy={true}
-                  offset={-70}
-                  duration={500}
-                  className="text-gray-800 hover:text-blue-700 font-semibold duration-300 cursor-pointer"
+                  onClick={closeMenu} to={link.link} smooth={true} spy={true} offset={-70}
+                  duration={500} className="text-gray-800 hover:text-blue-700 font-semibold duration-300 cursor-pointer"
                 >
                   {link.name}
                 </Link>
@@ -130,25 +124,18 @@ const Nav = () => {
           ))}
 
           {/* Contact / Book Button for mobile */}
-          <li className="mt-4 md:mt-0 block md:hidden">
-            <Link
-              to="contact"
-              smooth={true}
-              offset={-70}
-              duration={500}
-              onClick={closeMenu}
-            >
+          {/* <li className="mt-4 md:mt-0 block md:hidden">
+            <Link to="contact" smooth={true} offset={-70} duration={500} onClick={closeMenu} >
               <button className="bg-gradient-to-r from-blue-600 to-green-600 
-                       hover:shadow-lg text-white px-8 py-3 
-                       rounded-xl font-semibold transition-all duration-300 cursor-pointer">
-                Book Now
+                       hover:shadow-lg text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer">
+                Contact Us
               </button>
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Desktop Book Now Button */}
-        <div className="hidden md:block flex-shrink-0">
+        {/* <div className="hidden md:block flex-shrink-0">
           <Link
             to="contact"
             smooth={true}
@@ -158,10 +145,10 @@ const Nav = () => {
           >
             <button className="bg-gradient-to-r from-blue-600 to-green-600 
                        hover:shadow-lg text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer">
-              Book Now
+              Contact Us
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

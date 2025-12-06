@@ -57,14 +57,21 @@ export default function DentalFooter() {
             </h3>
             <div className="flex md:justify-end gap-5">
               {[
-                { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-500" },
-                { icon: Instagram, label: "Instagram", color: "hover:text-pink-500" },
-                { icon: Twitter, label: "Twitter", color: "hover:text-sky-400" },
-                { icon: Facebook, label: "Facebook", color: "hover:text-blue-600" },
-              ].map(({ icon: Icon, label, color }) => (
+                { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-500", link: "#" },
+                {
+                  icon: Instagram,
+                  label: "Instagram",
+                  color: "hover:text-pink-500",
+                  link: "https://www.instagram.com/aa__dental_care/?igsh=MW1mdmdlcWw5czk3dA%3D%3D#"
+                },
+                { icon: Twitter, label: "Twitter", color: "hover:text-sky-400", link: "#" },
+                { icon: Facebook, label: "Facebook", color: "hover:text-blue-600", link: "#" },
+              ].map(({ icon: Icon, label, color, link }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group ${color} transition-all duration-300`}
                   aria-label={label}
                 >

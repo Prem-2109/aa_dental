@@ -1,24 +1,21 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { slideUpVariants } from "./animation";
 import { Link } from "react-scroll";
-import heroBanner from "../assets/images/hero-banner.jpg";
+import { assets } from "../assets/images/assets";
 
 export default function DentalHero() {
   return (
     <section
-      className="relative flex items-center justify-center text-white text-center overflow-hidden"
-      style={{
-        minHeight: "100vh",
-        overflowY: "hidden", // Prevents vertical scroll bar
-      }}
+      id="home"
+      className="relative flex items-center text-white overflow-hidden"
+      style={{ minHeight: "100vh", overflowY: "hidden" }}
     >
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${heroBanner})`,
-          backgroundAttachment: "fixed", // cinematic effect
+          backgroundImage: `url(${assets.heroBanner})`,
+          backgroundAttachment: "fixed",
         }}
       />
 
@@ -31,20 +28,20 @@ export default function DentalHero() {
         whileInView="visible"
         variants={slideUpVariants}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 max-w-4xl px-10 py-20 md:py-28 flex flex-col items-center justify-center"
+        className="relative z-10 max-w-4xl px-10 py-20 md:py-28 flex flex-col items-start justify-center text-left"
       >
         <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold leading-tight mb-6">
-          Your Smile, Our Priority —{" "}
+          Your Smile, Our Priority —{" "}<br/>
           <span className="text-teal-300">Advanced Dental Care You Can Trust</span>
         </h1>
 
-        <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-gray-200 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
           Experience compassionate, state-of-the-art dental care designed for your
           comfort and confidence. Our team combines advanced technology with a
           patient-first approach to keep your smile healthy and bright.
         </p>
 
-        <Link
+        {/* <Link
           to="contact"
           smooth={true}
           offset={-70}
@@ -54,7 +51,7 @@ export default function DentalHero() {
           transition-all duration-300 cursor-pointer"
         >
           Book an Appointment
-        </Link>
+        </Link> */}
       </motion.div>
 
       {/* Optional Subtle Blur */}

@@ -55,7 +55,7 @@ export default function MediaDaySection() {
               <Clock className="text-[#00bca2] mt-1" size={22} />
               <div>
                 <h4 className="font-semibold text-lg">Operating Hours</h4>
-                <p>Mon – Sat: <span className="font-medium text-[#00bca2]">10:00 AM – 11:00 PM</span></p>
+                <p>Mon – Sat: <span className="font-medium text-[#00bca2]">10:00 AM to 1:00 PM and 5:00 AM to 9 PM</span></p>
                 <p>Sunday: <span className="font-medium text-[#00bca2]">By Appointment Only</span></p>
               </div>
             </div>

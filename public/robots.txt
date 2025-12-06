@@ -1,0 +1,8 @@
+# robots.txt for https://aa-dental.netlify.app/
+# Allow Google and all other search engines to crawl everything
+
+User-agent: *
+Disallow:
+
+# Point Google to your sitemap for faster indexing
+Sitemap: https://aa-dental.netlify.app/sitemap.xml
